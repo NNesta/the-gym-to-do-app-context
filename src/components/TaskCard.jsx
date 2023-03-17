@@ -24,10 +24,24 @@ const TaskCard = ({ id, taskText, isCompleted }) => {
     });
     setIsEditing(false);
   };
+  const handlecompleteTask = () => {
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, isCompleted: !isCompleted };
+        }
+        return task;
+      });
+    });
+  };
 
   return (
     <div className="flex items-center gap-4  border-b py-2 my-4">
-      <input type="checkbox" checked={isCompleted} />
+      <input
+        type="checkbox"
+        onClick={handlecompleteTask}
+        checked={isCompleted}
+      />
       <div className={`flex-1 ${isCompleted && "line-through"}`}>
         {isEditing ? (
           <input
