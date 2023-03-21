@@ -12,7 +12,7 @@ const InputBox = () => {
     setInvalidInput(false);
   };
   const handleAdd = () => {
-    if (taskText) {
+    if (taskText.trim()) {
       setTasks((prevTasks) => {
         return [{ id: nanoid(), taskText, isCompleted: false }, ...prevTasks];
       });
@@ -40,7 +40,7 @@ const InputBox = () => {
         }}
       />
 
-      {taskText && (
+      {taskText.trim() && (
         <BsPlusCircleFill
           onClick={handleAdd}
           size={25}
