@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import InputBox from "./components/InputBox";
-import TaskCard from "./components/TaskCard";
+import TaskItem from "./components/TaskItem";
 import { AppContext } from "./context";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <InputBox />
       <div>
         {tasks.map((task, index) => (
-          <TaskCard key={index} {...task} />
+          <TaskItem key={index} {...task} />
         ))}
       </div>
     </main>

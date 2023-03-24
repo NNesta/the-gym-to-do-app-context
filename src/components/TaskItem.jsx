@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { AppContext } from "../context";
 
-const TaskCard = ({ id, taskText, isCompleted }) => {
+const TaskItem = ({ id, taskText, isCompleted }) => {
   const { setTasks } = useContext(AppContext);
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState("");
@@ -34,7 +34,10 @@ const TaskCard = ({ id, taskText, isCompleted }) => {
       });
     });
   };
-
+  const handleEnter = () => {
+    setIsEditing(true);
+    setEditText(taskText);
+  };
   return (
     <div className="flex items-center gap-4  border-b py-2 my-4">
       <input
@@ -72,10 +75,7 @@ const TaskCard = ({ id, taskText, isCompleted }) => {
         </div>
       ) : (
         <div
-          onClick={() => {
-            setIsEditing(true);
-            setEditText(taskText);
-          }}
+          onClick={handleEnter}
           className="p-2 rounded-full hover:bg-gray-200 cursor-pointer"
         >
           <FiEdit size={25} />
@@ -91,4 +91,4 @@ const TaskCard = ({ id, taskText, isCompleted }) => {
   );
 };
 
-export default TaskCard;
+export default TaskItem;
